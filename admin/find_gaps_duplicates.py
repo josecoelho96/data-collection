@@ -73,7 +73,7 @@ def list_faults(content, gaps, duplicates):
             measurement_label = datetime.datetime.strftime(last_timestamp,  "%Y-%m-%d %H:%M")
             # original_ts_str = datetime.datetime.strftime(last_timestamp,  "%Y-%m-%d %H:%M")
             # duplicate_ts_str = datetime.datetime.strftime(current_timestamp,  "%Y-%m-%d %H:%M")
-            logging.warn("A duplicate was was found for measurement '{}'. Original: '{}'. Duplicate: '{}'".
+            logging.warn("A duplicate was found for measurement '{}'. Original: '{}'. Duplicate: '{}'".
                 format(measurement_label, last_timestamp, current_timestamp)
             )
 
@@ -101,12 +101,12 @@ def list_faults(content, gaps, duplicates):
             gap_end_str = datetime.datetime.strftime(gap_end, "%Y-%m-%d %H:%M")
 
             if gap_size == 1:
-                logging.warn("A gap was was found. Dimension: {} ['{}']".
+                logging.warn("A gap was found. Dimension: {} ['{}']".
                     format(gap_size, gap_start_str)
                 )
                 gaps.append(datetime.datetime.strftime(gap_start, "%Y-%m-%d %H:%M"))
             else:
-                logging.warn("A gap was was found. Dimension: {} ['{}' to '{}']".
+                logging.warn("A gap was found. Dimension: {} ['{}' to '{}']".
                     format(gap_size, gap_start_str, gap_end_str)
                 )
                 while gap_start <= gap_end:
