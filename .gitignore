@@ -3,3 +3,4 @@ env.py
 __pycache__/
 logs/
 output/
+db.php
