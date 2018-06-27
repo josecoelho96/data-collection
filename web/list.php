@@ -2,8 +2,7 @@
     $conn = require_once('db.php');
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $stmt = $conn->prepare("SELECT date_created, origin, temperature, humidity, light_intensity FROM measurements ORDER BY date_created DESC");
-    # $stmt->bindValue(":measurements_table", "measurements");
+    $stmt = $conn->prepare("SELECT id, date_created, origin, temperature, humidity, light_intensity FROM measurements ORDER BY date_created DESC");
 
     $measurements = array();
 
@@ -31,18 +30,19 @@
         </style>
     </head>
     <body>
-        <h1>Data collection results - All</h1>
+        <p>Data collection results - All</p>
         <?php
             if (count($measurements) == 0) {
                 print("<p>No measurements found!</p>");
             } else {
 
                 print("<table>");
-                print("<tr><th>Origin</th><th>Date created</th><th>Temperature</th><th>Humidity</th><th>Light Intensity</th></tr>");
+                print("<tr><th>ID</th><th>Date</th><th>Origin</th><th>Temperature</th><th>Humidity</th><th>Light Intensity</th></tr>");
                 foreach ($measurements as $m) {
                     $date = date_create($m['date_created']);
-                    print("<tr><td>".$m['origin']."</td>");
+                    print("<tr><td>".$m['id']."</td>");
                     print("<td>".date_format($date, 'Y-m-d H:i:s')."</td>");
+                    print("<td>".$m['origin']."</td>");
                     print("<td>".$m['temperature']."</td>");
                     print("<td>".$m['humidity']."</td>");
                     print("<td>".$m['light_intensity']."</td></tr>");
